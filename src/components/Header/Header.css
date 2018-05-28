@@ -1,6 +1,0 @@
-@import '../variables.css';
-
-.activeRoute {
-  font-weight: bold;
-  text-decoration: underline;
-}

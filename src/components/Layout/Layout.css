@@ -1,9 +1,0 @@
-@import '../variables.css';
-
-body {
-  font-family: var(--font-base);
-}
-
-.mainContainer {
-  padding-top: 20px;
-}
