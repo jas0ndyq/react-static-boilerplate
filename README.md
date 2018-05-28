@@ -2,13 +2,6 @@
 
 Just clone the repo, install Node.js modules and run `npm start`:
 
-```shell
-$ clone this project to MyApp folder
-$ cd MyApp
-$ npm install           # Install project dependencies listed in package.json
-$ npm start             # Build and launch the app, same as "node tools/start.js"
-```
-
 ### IE8 Support Version
 
 &nbsp; &nbsp; react <= 0.14.9<br>
