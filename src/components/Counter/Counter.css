@@ -1,0 +1,13 @@
+@import '../variables.css';
+
+.counter {
+  font-weight: bold;
+}
+
+.counterGreen {
+  color: rgb(15, 150, 15);
+}
+
+.counterContainer {
+  margin: 1em auto;
+}
