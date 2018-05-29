@@ -89,7 +89,7 @@ const config = {
       }
     ),
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, './src/index.ejs'),
+      template: path.resolve(__dirname, './src/index.html'),
       filename: 'index.html',
       minify: !DEBUG ? {
         collapseWhitespace: true,

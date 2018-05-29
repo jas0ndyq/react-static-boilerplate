@@ -5,13 +5,11 @@ import { Button, Switch, Table, Icon } from 'antd';
 
 require('antd/lib/index.css');
 
-console.log(Button);
-
 const columns = [{
   title: '姓名',
   dataIndex: 'name',
   key: 'name',
-  render(text) {
+  render (text) {
     return <a href="#">{text}</a>;
   }
 }, {
@@ -25,7 +23,7 @@ const columns = [{
 }, {
   title: '操作',
   key: 'operation',
-  render(text, record) {
+  render (text, record) {
     return (
       <span>
         <a href="#">操作一{record.name}</a>
@@ -58,7 +56,7 @@ const data = [{
 
 export const Counter = (props) => (
   <div>
-    <Table columns={columns} dataSource={data} />
+    <Table columns={columns} dataSource={data} /><br/>
     <Switch defaultChecked={false} />
     <Button type="primary">antd 按钮</Button>
     <h2 className={classes.counterContainer}>
