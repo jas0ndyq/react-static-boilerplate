@@ -1,6 +1,6 @@
-import React from 'react'
-import { IndexLink, Link } from 'react-router'
-import classes from './Header.css'
+import React from 'react';
+import { IndexLink, Link } from 'react-router';
+import classes from './Header.css';
 
 export const Header = () => (
   <div>
@@ -13,6 +13,6 @@ export const Header = () => (
       Counter
     </Link>
   </div>
-)
+);
 
-export default Header
+export default Header;

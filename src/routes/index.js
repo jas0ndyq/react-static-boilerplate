@@ -1,8 +1,8 @@
 // We only need to import the modules necessary for initial render
-import Layout from '../components/Layout'
-import Home from './Home'
-import NotFound from './NotFound'
-import counterRoute from './Counter'
+import Layout from '../components/Layout';
+import Home from './Home';
+import NotFound from './NotFound';
+import counterRoute from './Counter';
 
 /*  Note: Instead of using JSX, we recommend using react-router
     PlainRoute objects to build route definitions.   */
@@ -15,7 +15,7 @@ export const createRoutes = (store) => ({
     counterRoute(store),
     NotFound,
   ],
-})
+});
 
 /*  Note: childRoutes can be chunked or otherwise loaded programmatically
     using getChildRoutes with the following signature:
@@ -35,4 +35,4 @@ export const createRoutes = (store) => ({
     when the route exists and matches.
 */
 
-export default createRoutes
+export default createRoutes;

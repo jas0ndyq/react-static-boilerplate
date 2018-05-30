@@ -36,6 +36,7 @@ const config = {
       'redux',
       'redux-thunk',
     ],
+    '../tools/dev-client.js':'../tools/dev-client.js'
   },
 
   // Options affecting the output of the compilation
@@ -53,7 +54,8 @@ const config = {
 
   // Developer tool to enhance debugging, source maps
   // http://webpack.github.io/docs/configuration.html#devtool
-  devtool: DEBUG ? 'source-map' : false,
+  // devtool: DEBUG ? 'source-map' : false,
+  devtool: false,
 
   // What information should be printed to the console
   stats: {
@@ -95,11 +97,22 @@ const config = {
         collapseWhitespace: true,
       } : null,
       hash: true,
+      inject: true
     }),
+
   ],
 
   // Options affecting the normal modules
   module: {
+    preLoaders: (!DEBUG) ? [
+      {
+        test: /\.jsx?$/, 
+        loader: "eslint-loader", 
+        include: [
+          path.resolve(__dirname, './src'),
+        ]
+      }
+    ]:[],
     loaders: [
       {
         test: /\.jsx?$/,
@@ -114,10 +127,12 @@ const config = {
       },
       {
         test: /\.css/,
-        loader: ExtractTextPlugin.extract(
-          'style-loader',
-          'css-loader?-autoprefixer&modules=true&localIdentName=[local]'
-        ),
+        loader: DEBUG ? 
+                'style-loader!css-loader?-autoprefixer&modules=true&localIdentName=[local]': 
+                ExtractTextPlugin.extract(
+                    'style-loader',
+                    'css-loader?-autoprefixer&modules=true&localIdentName=[local]'
+                  )
       },
       {
         test: /\.scss$/,
@@ -162,6 +177,11 @@ const config = {
 // Optimize the bundle in release (production) mode
 if (!DEBUG) {
   config.plugins.push(new webpack.optimize.DedupePlugin())
+}
+else {
+  config.plugins.push(new webpack.HotModuleReplacementPlugin())
+  config.plugins.push(new webpack.NoErrorsPlugin())
+  config.entry['../tools/dev-client.js'] = '../tools/dev-client.js'
 }
 
 // https://github.com/jun0205/react-static-boilerplate/issues/14
