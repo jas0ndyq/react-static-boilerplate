@@ -5,7 +5,7 @@ class Footer extends Component {
   render () {
     return (
       <div className="footer">
-        <span className="footerSpan">关于</span>
+        <span className="footerSpan">关于1</span>
         <span className="footerSpan">其他</span>
       </div>
     );

@@ -36,7 +36,6 @@ const config = {
       'redux',
       'redux-thunk',
     ],
-    '../tools/dev-client.js':'../tools/dev-client.js'
   },
 
   // Options affecting the output of the compilation
@@ -104,15 +103,15 @@ const config = {
 
   // Options affecting the normal modules
   module: {
-    preLoaders: (!DEBUG) ? [
-      {
-        test: /\.jsx?$/, 
-        loader: "eslint-loader", 
-        include: [
-          path.resolve(__dirname, './src'),
-        ]
-      }
-    ]:[],
+    // preLoaders: (!DEBUG) ? [
+    //   {
+    //     test: /\.jsx?$/, 
+    //     loader: "eslint-loader", 
+    //     include: [
+    //       path.resolve(__dirname, './src'),
+    //     ]
+    //   }
+    // ]:[],
     loaders: [
       {
         test: /\.jsx?$/,
@@ -181,7 +180,8 @@ if (!DEBUG) {
 else {
   config.plugins.push(new webpack.HotModuleReplacementPlugin())
   config.plugins.push(new webpack.NoErrorsPlugin())
-  config.entry['../tools/dev-client.js'] = '../tools/dev-client.js'
+  config.entry['../tools/dev-client.js'] = '../tools/dev-client.js';
+  console.log(config.entry)
 }
 
 // https://github.com/jun0205/react-static-boilerplate/issues/14

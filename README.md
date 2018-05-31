@@ -15,3 +15,8 @@ Just clone the repo, install Node.js modules and run `npm start`:
 ```shell
 $ npm run build         # Build production release 
 ```
+
+
+### Echarts IE8 兼容性
+
+主要数据图表兼容性较高，动画效果较差，大数据量性能较差。

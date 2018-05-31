@@ -3,6 +3,7 @@ import Layout from '../components/Layout';
 import Home from './Home';
 import NotFound from './NotFound';
 import counterRoute from './Counter';
+import echartsRoute from './Echarts/index';
 
 /*  Note: Instead of using JSX, we recommend using react-router
     PlainRoute objects to build route definitions.   */
@@ -13,6 +14,7 @@ export const createRoutes = (store) => ({
   indexRoute: Home,
   childRoutes: [
     counterRoute(store),
+    { path: '/echarts', component: echartsRoute },
     NotFound,
   ],
 });
