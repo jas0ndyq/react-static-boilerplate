@@ -2,10 +2,11 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-
 const args = process.argv.slice(2);
 const DEBUG = !(args[0] === '--release');
 const VERBOSE = args[0] === '--verbose';
+
+const AppConfg = require('./tools/appConfig');
 
 /**
  * Webpack configuration (core/main.js => build/bundle.js)
@@ -35,7 +36,7 @@ const config = {
       'react-router',
       'redux',
       'redux-thunk',
-    ],
+    ]
   },
 
   // Options affecting the output of the compilation
@@ -74,7 +75,7 @@ const config = {
   plugins: [
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.optimize.CommonsChunkPlugin({
-      name: 'vendor',
+      names: ['vendor'],
       minChunks: Infinity,
     }),
     new webpack.DefinePlugin({
@@ -90,6 +91,7 @@ const config = {
       }
     ),
     new HtmlWebpackPlugin({
+      title: AppConfg.appTitle,
       template: path.resolve(__dirname, './src/index.html'),
       filename: 'index.html',
       minify: !DEBUG ? {
@@ -190,6 +192,7 @@ const uglyOptions = !DEBUG ? {
   compress: {
     warnings: VERBOSE,
     screw_ie8: false,
+    drop_console: true
   },
   mangle: { screw_ie8: false },
   output: { screw_ie8: false },

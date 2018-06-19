@@ -3,6 +3,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import createHashHistory from 'history/lib/createHashHistory';
+import createBrowserHistory from 'history/lib/createBrowserHistory';
 import { useRouterHistory } from 'react-router';
 import syncHistoryWithStore from 'react-router-redux/lib/sync';
 import createStore from './store/createStore';
@@ -13,6 +14,8 @@ import AppContainer from './containers/AppContainer';
 const browserHistory = useRouterHistory(createHashHistory)({
   basename: __BASENAME__,
 });
+
+console.log('browserHistory', browserHistory);
 
 // ========================================================
 // Store and History Instantiation
@@ -28,6 +31,7 @@ const history = syncHistoryWithStore(browserHistory, store, {
   selectLocationState: (state) => state.router,
 });
 
+console.log('history', history);
 // ========================================================
 // Developer Tools Setup
 // ========================================================

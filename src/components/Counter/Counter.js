@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import classes from './Counter.css';
 import { Button, Switch, Table, Icon } from 'antd';
 
-require('antd/lib/index.css');
 
 const columns = [{
   title: '姓名',

@@ -4,6 +4,10 @@ import Home from './Home';
 import NotFound from './NotFound';
 import counterRoute from './Counter';
 import echartsRoute from './Echarts/index';
+import Article from './Article/index';
+import Calendar from './Calender/index';
+
+require('antd/lib/index.css');
 
 /*  Note: Instead of using JSX, we recommend using react-router
     PlainRoute objects to build route definitions.   */
@@ -15,6 +19,8 @@ export const createRoutes = (store) => ({
   childRoutes: [
     counterRoute(store),
     { path: '/echarts', component: echartsRoute },
+    { path: '/article', component: Article },
+    { path: '/calendar', component: Calendar },
     NotFound,
   ],
 });

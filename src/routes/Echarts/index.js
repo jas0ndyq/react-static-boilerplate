@@ -20,7 +20,7 @@ class EchartContainer extends Component {
 
     var option = {
       tooltip: {
-        formatter: "{a} <br/>{b} : {c}%"
+        formatter: '{a} <br/>{b} : {c}%'
       },
       toolbox: {
         feature: {

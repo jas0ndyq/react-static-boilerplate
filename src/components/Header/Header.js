@@ -16,6 +16,14 @@ export const Header = () => (
     <Link to="/Echarts" activeClassName={classes.activeRoute}>
       Echarts
     </Link>
+    {' · '}
+    <Link to="/article" activeClassName={classes.activeRoute}>
+      Article
+    </Link>
+    {' · '}
+    <Link to="/calendar" activeClassName={classes.activeRoute}>
+      Calendar
+    </Link>
   </div>
 );
 
