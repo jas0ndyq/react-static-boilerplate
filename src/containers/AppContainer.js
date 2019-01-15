@@ -1,10 +1,15 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Router, Route } from 'react-router';
+import { Router } from 'react-router';
 import { Provider } from 'react-redux';
-import Article from '../routes/Article';
 
-class AppContainer extends React.Component {
+class AppContainer extends Component {
+
+  constructor () {
+    super();
+    this.onRouterUpdate = this.onRouterUpdate.bind(this);
+  }
+
   static propTypes = {
     history: PropTypes.object.isRequired,
     routes: PropTypes.object.isRequired,
@@ -12,15 +17,16 @@ class AppContainer extends React.Component {
     store: PropTypes.object.isRequired,
   }
 
+  onRouterUpdate (e) {
+    window.scrollTo(0, 0);
+  }
+
   render () {
     const { history, routes, routerKey, store } = this.props;
 
     return (
       <Provider store={store}>
-        <Router history={history} key={routerKey}>
-          <Route path="/reg" component={Article} />
-          {routes}
-        </Router>
+        <Router onUpdate={this.onRouterUpdate} history={history} children={routes} key={routerKey} />
       </Provider>
     );
   }

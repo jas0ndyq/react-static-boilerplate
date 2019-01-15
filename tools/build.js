@@ -11,6 +11,7 @@
 const task = require('./task');
 
 module.exports = task('build', () => Promise.resolve()
+  .then(() => require('./less'))
   .then(() => require('./clean'))
   .then(() => require('./copy'))
   .then(() => require('./bundle'))

@@ -1,0 +1,22 @@
+.nav-bar-card {
+  position: relative;
+  padding: 8px 0;
+}
+
+.nav-bar-card .bar-bg {
+  height: 10px;
+  background: #F6F6F6;
+}
+
+.nav-bar-card .title {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 26px;
+  line-height: 26px;
+  padding-right: 10px;
+  background: #fff;
+  font-size: 18px;
+  color: #4a4a4a;
+}
+

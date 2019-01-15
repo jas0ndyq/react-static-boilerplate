@@ -9,11 +9,11 @@ function fetchDataAction (page, rows) {
       payload: {
         status: 'doing'
       }          
-    })
-    return axios.get(`http://gank.io/api/data/Android/${rows}/${page}`)
+    });
+    return axios.get(`/api/data/Android/${rows}/${page}`)
       .then(res => {
         if (res.data.error) {
-          throw new Error('response error')
+          throw new Error('response error');
         }
         else {
           dispatch({

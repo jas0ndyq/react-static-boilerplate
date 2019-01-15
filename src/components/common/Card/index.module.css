@@ -1,0 +1,90 @@
+.analyaze-row {
+  margin-top: 10px;
+}
+
+.analyaze-col-3 {
+  margin-top: 20px;
+}
+
+.parent-card {
+  /* border: 1px solid #d1d1d1; */
+  display: inline-block;
+}
+
+.parent-card img {
+  width: 38px;
+  height: 38px;
+  margin: 15px 10px;
+}
+
+.col-3-content {
+  padding-top: 10px;
+}
+
+.col-3-content .cont-title {
+  font-size: 12px;
+  color: #9b9b9b;
+}
+
+.col-3-content .cont-number {
+  font-size: 20px;
+  color: #000;
+  /* font-weight: bold; */
+}
+
+.analyaze-content {
+  margin: 15px 75px;
+}
+
+.analyaze-title {
+  padding: 10px 0;
+}
+
+.analyaze-title span {
+  display: block;
+  font-size: 16px;
+  color: #1a1a1a;
+  background: #fff;
+  left: 0;
+  top: 0;
+  height: 30px;
+  line-height: 30px;
+  padding-right: 10px;
+}
+
+.analyaze-title p {
+  width: 100%;
+  height: 10px;
+  background: #F6F6F6;
+}
+
+.analyaze-bar-chart,
+.analyaze-chart {
+  border: 1px solid #c7c7c7;
+  margin-top: 15px;
+  padding: 15px;
+  height: 350px;
+}
+
+.chart-picture {
+  width: 100%;
+  height: 100%;
+}
+
+.analyaze-distribute {
+  margin:  0 70px;
+}
+
+@media screen and (max-width: 920px) {
+  .parent-card {
+    width: 45% !important;
+    margin-right: 0 !important;
+    border-left: none !important;
+  }
+  .parent-card:nth-child(even) {
+    width: 50% !important;
+  }
+  .parent-card:nth-child(odd) {
+    margin-right: 5% !important;
+  }
+}

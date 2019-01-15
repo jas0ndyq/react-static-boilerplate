@@ -1,23 +1,26 @@
 /* eslint-disable no-undef */
-import { applyMiddleware, compose, createStore } from 'redux'
-import routerMiddleware from 'react-router-redux/lib/middleware'
-import thunk from 'redux-thunk'
-import makeRootReducer from './reducers'
+import { applyMiddleware, compose, createStore } from 'redux';
+import routerMiddleware from 'react-router-redux/lib/middleware';
+import thunk from 'redux-thunk';
+import makeRootReducer from './reducers';
 
 export default (initialState = {}, history) => {
   // ======================================================
   // Middleware Configuration
   // ======================================================
-  const middleware = [thunk, routerMiddleware(history)]
+  const middleware = [
+    thunk,
+    routerMiddleware(history)
+  ];
 
   // ======================================================
   // Store Enhancers
   // ======================================================
-  const enhancers = []
+  const enhancers = [];
   if (__DEV__) {
-    const devToolsExtension = window.devToolsExtension
+    const devToolsExtension = window.devToolsExtension;
     if (typeof devToolsExtension === 'function') {
-      enhancers.push(devToolsExtension())
+      enhancers.push(devToolsExtension());
     }
   }
 
@@ -31,15 +34,15 @@ export default (initialState = {}, history) => {
       applyMiddleware(...middleware),
       ...enhancers
     )
-  )
-  store.asyncReducers = {}
+  );
+  store.asyncReducers = {};
 
   if (module.hot) {
     module.hot.accept('./reducers', () => {
-      const reducers = require('./reducers').default
-      store.replaceReducer(reducers)
-    })
+      const reducers = require('./reducers').default;
+      store.replaceReducer(reducers);
+    });
   }
 
-  return store
-}
+  return store;
+};

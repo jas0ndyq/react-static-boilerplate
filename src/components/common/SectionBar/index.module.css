@@ -1,0 +1,25 @@
+.theme-network-label {
+  position: relative;
+  margin-bottom: 10px;
+}
+
+.tnl-text {
+  font-size: 16px;
+  color: #1A1A1A;
+  letter-spacing: 0;
+  line-height: 33px;
+  position: relative;
+  z-index: 2;
+  display: inline-block;
+  padding: 0 8px 0 0;
+  background: #fff;
+}
+
+.tnl-backdrop {
+  position: absolute;
+  width: 100%;
+  height: 8px;
+  background: #F6F6F6;
+  z-index: 1;
+  top: 13px;
+}

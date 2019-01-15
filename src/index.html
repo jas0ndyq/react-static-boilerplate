@@ -1,12 +1,24 @@
 <!doctype html>
 <html class="no-js">
+
 <head>
   <meta charset="utf-8">
-  <title><%= htmlWebpackPlugin.options.title %></title>
+  <title>
+    <%= htmlWebpackPlugin.options.title %>
+  </title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
   <link rel="stylesheet" href="./static/css/reset.css">
+  <link rel="stylesheet" href="./static/lib/fa/css/font-awesome.css">
+  <link rel="stylesheet" href="./static/css/antd.css">
+  <link rel="shortcut icon" href="./static/favicon.ico" type="image/x-icon">
+  <link rel="bookmark" href="./static/favicon.ico" type="image/x-icon">
   <script src="./static/js/echarts.min.js"></script>
+
+  <!--[if lt IE 9]>         
+    <script src="./static/js/json2.js"></script>
+    <script src="./static/js/respond.min.js"></script>
+  <![endif]-->
 </head>
 
 <body>

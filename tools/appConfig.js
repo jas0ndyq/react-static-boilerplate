@@ -1,3 +1,3 @@
 module.exports = {
-  appTitle: '-_-IE8 React Redux Starter Kit',
+  appTitle: '科技文摘服务平台',
 }

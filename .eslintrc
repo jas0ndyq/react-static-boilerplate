@@ -17,7 +17,7 @@
         "error",
         "always"
     ],
-    "max-len": ["error", 80],
+    "max-len": ["error", 200],
     "no-console": "off",
     "no-else-return": "off",
     "no-multiple-empty-lines": [
@@ -62,6 +62,9 @@
     "brace-style": ["error", "stroustrup"],
     "space-before-function-paren": ["error", "always"],
     "space-infix-ops": "error",
-    "block-spacing": ["error", "always"]
+    "block-spacing": ["error", "always"],
+    "array-bracket-newline": ["error", { "multiline": true, "minItems": 5 }],
+    "array-element-newline": ["error", { "multiline": true, "minItems": 2 }],
+    "object-property-newline": 1
   }
 }

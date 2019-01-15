@@ -1,0 +1,88 @@
+/* 主题分析页面input */
+
+.ant-btn-lg,
+.ant-select-selection,
+.ant-input {
+  border-radius: 4px;
+}
+
+.ta-input-item {
+  border-radius: 0;
+}
+
+.ant-radio-wrapper {
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.square-btn {
+  padding: 4px 8px 5px 8px; 
+}
+
+.literature-title {
+  font-size: 15px;
+  color: #006ACC;
+  position: absolute;
+  left: 8px;
+  top: 18px;
+}
+
+.down-up-btn {
+  font-size: 22px;
+  color: #d1d1d1;
+}
+
+.filter-btn {
+  width: 36px;
+  height: 36px;
+  color: #646675;
+  background: #fff;
+  border-color: #7E7288;
+}
+
+.ar-table-detail .ant-table-thead > tr > th {
+  background: #DFEBFE !important;
+  border-color: #D1DFF4 !important;  
+}
+
+.rm-input-item .ant-input-group-addon {
+  border-radius: 0 !important;
+  background: transparent;
+  font-size: 16px;
+  color: #fff;
+  padding: 0 10px;
+}
+
+.rm-input-item input {
+  height: 46px;
+  border-left: none;
+  border-radius: 0;
+  background: transparent;
+  color: #fff;
+  font-size: 16px;
+}
+
+  
+.rm-input-item input:hover,
+.rm-input-item input:focus {
+  border-left: none;
+  border-color: #fff;
+}
+
+.ar-table-detail .ant-table {
+  font-size: 13px;
+}
+
+.search-tabs-left label {
+  font-size: 14px;
+  color: #4a4a4a !important;
+}
+
+@media screen and (max-width: 920px) {
+  .md-10 {
+    margin-bottom: 10px;
+  }
+  .ant-pagination-item {
+    margin-bottom: 5px;
+  }
+}

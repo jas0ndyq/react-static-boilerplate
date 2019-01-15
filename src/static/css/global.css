@@ -1,0 +1,60 @@
+body {
+  background: rgb(238, 240, 242) !important;
+  font-size: 14px;
+  min-height: 100% !important;
+  height: auto !important;
+}
+
+#container {
+  min-height: 100%;
+}
+
+.clear {
+  clear: both;
+  overflow: auto;
+  zoom: 1;
+}
+
+.fl {
+  float: left;
+}
+
+.fr {
+  float: right;
+}
+
+.cp {
+  cursor: pointer;
+}
+
+.relative {
+  position: relative;
+}
+
+.absolute {
+  position: absolute;
+}
+
+.ovh {
+  overflow: hidden;
+}
+
+.tof {
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+}
+
+.inline-block {
+  display: inline-block;
+}
+
+.pages-handle {
+  background: #F7F7F7;
+  text-align: center;
+  padding: 15px 40px;
+}
+
+.pages-handle ul {
+  display: inline-block;
+}

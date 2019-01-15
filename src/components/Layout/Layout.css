@@ -1,9 +1,29 @@
-@import '../variables.css';
-
-body {
-  font-family: var(--font-base);
+.container {
+  width: 100%;
+  position: relative;
+  /* overflow: hidden; */
 }
 
 .mainContainer {
-  padding-top: 20px;
+  width: 1200px;
+  margin: 0 auto;
+  background: #fff;
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.10);
+  padding-bottom: 20px;
+}
+
+
+@media (max-width: 920px) {
+  .container {
+    flex: 1;
+    display: flex;
+    flex-flow: column;
+  }
+
+  .mainContainer {
+    width: 100%;
+    margin: 55px auto 0 auto;
+    overflow: scroll;
+    min-height: auto !important;
+  }
 }

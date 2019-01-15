@@ -3,7 +3,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import createHashHistory from 'history/lib/createHashHistory';
-import createBrowserHistory from 'history/lib/createBrowserHistory';
+// import createBrowserHistory from 'history/lib/createBrowserHistory';
 import { useRouterHistory } from 'react-router';
 import syncHistoryWithStore from 'react-router-redux/lib/sync';
 import createStore from './store/createStore';
@@ -13,9 +13,8 @@ import AppContainer from './containers/AppContainer';
 // ========================================================
 const browserHistory = useRouterHistory(createHashHistory)({
   basename: __BASENAME__,
+  queryKey: false,
 });
-
-console.log('browserHistory', browserHistory, 1);
 
 // ========================================================
 // Store and History Instantiation
@@ -27,19 +26,16 @@ console.log('browserHistory', browserHistory, 1);
 // react-router-redux of its location.
 const initialState = window.___INITIAL_STATE__;
 const store = createStore(initialState, browserHistory);
-const history = syncHistoryWithStore(browserHistory, store, {
-  selectLocationState: (state) => state.router,
-});
+const history = syncHistoryWithStore(browserHistory, store, { selectLocationState: (state) => state.router, });
 
-console.log('history', history, store);
 // ========================================================
 // Developer Tools Setup
 // ========================================================
-if (__DEV__) {
-  if (window.devToolsExtension) {
-    window.devToolsExtension.open();
-  }
-}
+// if (__DEV__) {
+//   if (window.devToolsExtension) {
+//     window.devToolsExtension.open();
+//   }
+// }
 
 // ========================================================
 // Render Setup
@@ -93,7 +89,4 @@ if (__DEV__) {
   }
 }
 
-// ========================================================
-// Go!
-// ========================================================
 render();

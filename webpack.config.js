@@ -7,6 +7,15 @@ const DEBUG = !(args[0] === '--release');
 const VERBOSE = args[0] === '--verbose';
 
 const AppConfg = require('./tools/appConfig');
+function resolve (dir) {
+  return path.join(__dirname, '..', dir);
+}
+
+const theme = {
+  'primary-color':'#2980cc',
+  'link-color': '#006ACC',
+  'border-radius-base': '4px'  
+};
 
 /**
  * Webpack configuration (core/main.js => build/bundle.js)
@@ -19,9 +28,7 @@ const config = {
 
   // The entry point for the bundle
   entry: {
-    app: [
-      './main.js',
-    ],
+    app: ['./main.js'],
     vendor: DEBUG ? [] : [ 
       'es5-shim',
       'es5-shim/es5-sham',
@@ -42,7 +49,7 @@ const config = {
   // Options affecting the output of the compilation
   output: {
     path: path.resolve(__dirname, 'build'),
-    publicPath: '/',
+    publicPath: './',
     filename: 'assets/[name].js',
     chunkFilename: 'assets/[name].js',
     sourcePrefix: '  ',
@@ -105,35 +112,51 @@ const config = {
 
   // Options affecting the normal modules
   module: {
-    // preLoaders: (!DEBUG) ? [
-    //   {
-    //     test: /\.jsx?$/, 
-    //     loader: "eslint-loader", 
-    //     include: [
-    //       path.resolve(__dirname, './src'),
-    //     ]
-    //   }
-    // ]:[],
+    preLoaders: [
+      {
+        test: /\.jsx?$/, 
+        loader: 'eslint-loader', 
+        include: [path.resolve(__dirname, './src'), ]
+      }
+    ],
     loaders: [
       {
         test: /\.jsx?$/,
-        include: [
-          path.resolve(__dirname, './src'),
-        ],
+        include: [path.resolve(__dirname, './src'), ],
         loader: 'babel-loader',
         query: {
           cacheDirectory: true,
-          plugins: [['import', { libraryName: 'antd'}]]
+          plugins: [
+            [
+              'import',
+              { libraryName: 'antd'}
+            ]
+          ]
         },
       },
       {
         test: /\.css/,
+        exclude: /\.module\.css$/,
         loader: DEBUG ? 
-                'style-loader!css-loader?-autoprefixer&modules=true&localIdentName=[local]': 
-                ExtractTextPlugin.extract(
-                    'style-loader',
-                    'css-loader?-autoprefixer&modules=true&localIdentName=[local]'
-                  )
+          'style-loader!css-loader?-autoprefixer&modules=true&localIdentName=[local]' : 
+          ExtractTextPlugin.extract('style-loader',
+            'css-loader?-autoprefixer&modules=true&localIdentName=[local]',
+            {
+              publicPath: '../../',
+            }
+          )
+      },
+      {
+        test: /\.module\.css$/,
+        loader: DEBUG ? 
+          'style-loader!css-loader?-autoprefixer&modules=true&localIdentName=[local][hash:base64:5]' : 
+          ExtractTextPlugin.extract(
+            'style-loader',
+            'css-loader?-autoprefixer&modules=true&localIdentName=[local][hash:base64:5]',
+            {
+              publicPath: '../',
+            }
+          )
       },
       {
         test: /\.scss$/,
@@ -141,6 +164,10 @@ const config = {
           'style-loader',
           'css-loader?-autoprefixer!sass-loader'
         ),
+      },
+      {
+        test: /\.less$/,
+        loader: 'style-loader!css-loader!' + 'less?{"sourceMap":true,"modifyVars":' + JSON.stringify(theme) + '}',
       },
       {
         test: /\.json$/,
@@ -167,23 +194,25 @@ const config = {
   // Alias
   resolve: {
     alias: {
-      components: path.resolve(__dirname, './src/components/'),
-      routes: path.resolve(__dirname, './src/routes/'),
-      services: path.resolve(__dirname, './src/services/'),
-      store: path.resolve(__dirname, './src/store/'),
+      '@components': path.resolve(__dirname, './src/components/'),
+      '@routes': path.resolve(__dirname, './src/routes/'),
+      '@services': path.resolve(__dirname, './src/services/'),
+      '@store': path.resolve(__dirname, './src/store/'),
+      '@helpers': path.resolve(__dirname, './src/helpers/'),
+      'static': path.resolve(__dirname, './src/static/'),
     },
   },
-}
+};
 
 // Optimize the bundle in release (production) mode
 if (!DEBUG) {
-  config.plugins.push(new webpack.optimize.DedupePlugin())
+  config.plugins.push(new webpack.optimize.DedupePlugin());
 }
 else {
-  config.plugins.push(new webpack.HotModuleReplacementPlugin())
-  config.plugins.push(new webpack.NoErrorsPlugin())
+  config.plugins.push(new webpack.HotModuleReplacementPlugin());
+  config.plugins.push(new webpack.NoErrorsPlugin());
   config.entry['../tools/dev-client.js'] = '../tools/dev-client.js';
-  console.log(config.entry)
+  console.log(config.entry);
 }
 
 // https://github.com/jun0205/react-static-boilerplate/issues/14
@@ -192,41 +221,41 @@ const uglyOptions = !DEBUG ? {
   compress: {
     warnings: VERBOSE,
     screw_ie8: false,
-    drop_console: true
+    drop_console: true,
   },
   mangle: { screw_ie8: false },
   output: { screw_ie8: false },
 } : {
-    mangle: false,
-    compress: {
-      drop_debugger: false,
-      warnings: VERBOSE,
-      screw_ie8: false,
-    },
-    output: {
-      beautify: true,
-      comments: true,
-      bracketize: true,
-      indent_level: 2,
-      keep_quoted_props: true,
-      screw_ie8: false,
-    },
-  }
+  mangle: false,
+  compress: {
+    drop_debugger: false,
+    warnings: VERBOSE,
+    screw_ie8: false,
+  },
+  output: {
+    beautify: true,
+    comments: true,
+    bracketize: true,
+    indent_level: 2,
+    keep_quoted_props: true,
+    screw_ie8: false,
+  },
+};
 
-// config.plugins.push(new webpack.optimize.UglifyJsPlugin(uglyOptions))
-
+  
 if (!DEBUG) {
-  config.plugins.push(new webpack.optimize.AggressiveMergingPlugin())
+  config.plugins.push(new webpack.optimize.UglifyJsPlugin(uglyOptions));
+  config.plugins.push(new webpack.optimize.AggressiveMergingPlugin());
   config.module.loaders
     .find(x => x.loader === 'babel-loader').query.plugins
     .unshift(
-    'transform-react-remove-prop-types',
-    'transform-react-constant-elements',
-    'transform-react-inline-elements',
-    'transform-es3-modules-literals',
-    'transform-es3-member-expression-literals',
-    'transform-es3-property-literals'
-    )
+      'transform-react-remove-prop-types',
+      'transform-react-constant-elements',
+      'transform-react-inline-elements',
+      'transform-es3-modules-literals',
+      'transform-es3-member-expression-literals',
+      'transform-es3-property-literals'
+    );
 }
 
-module.exports = config
+module.exports = config;

@@ -1,28 +1,19 @@
-// We only need to import the modules necessary for initial render
 import Layout from '../components/Layout';
-import Home from './Home';
 import NotFound from './NotFound';
-import counterRoute from './Counter';
-import echartsRoute from './Echarts/index';
-import Article from './Article/index';
-import Calendar from './Calender/index';
+// 业务路由
+// 首页
+import Index from '@routes/User/Index';
 
-require('antd/lib/index.css');
-
-/*  Note: Instead of using JSX, we recommend using react-router
-    PlainRoute objects to build route definitions.   */
+require('../static/css/global.css');
+require('../static/css/cover.css');
 
 export const createRoutes = (store) => ({
   path: '/',
   component: Layout,
-  indexRoute: Home,
-  childRoutes: [
-    counterRoute(store),
-    { path: '/echarts', component: echartsRoute },
-    { path: '/article', component: Article },
-    { path: '/calendar', component: Calendar},
-    NotFound,
-  ],
+  indexRoute: {
+    component: Index,
+  },
+  childRoutes: [NotFound, ],
 });
 
 /*  Note: childRoutes can be chunked or otherwise loaded programmatically

@@ -1,0 +1,163 @@
+.header {
+  width: 100%;
+  height: 80px;
+  line-height: 80px;
+  background-color: #fff;
+  border-bottom: 1px solid #ddd;
+  z-index: 10;
+  position: relative;
+  overflow: hidden;
+}
+
+.header-content {
+  width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  background-image: url('static/bg.png');
+}
+
+.hc-right-container {
+  position: absolute;
+  right: 20px;
+  top: 0;
+  line-height: 20px;
+}
+
+.header-right {
+  background: #F6F6F6;
+  padding: 0 10px;
+  border-bottom: 1px solid #CBCBCB;
+  position: relative;
+}
+
+.header-right::before {
+  content: '';
+  width: 28.5px;
+  height: 28.5px;
+  background: #F6F6F6;
+  position: absolute;
+  left: -15px;
+  top: -14px;
+  border-bottom: 1px solid #CBCBCB;
+  transform: rotate(45deg);
+  z-index: 1;
+}
+
+.header-right::after {
+  content: '';
+  width: 28.5px;
+  height: 28.5px;
+  background: #F6F6F6;
+  position: absolute;
+  right: -15px;
+  top: -14px;
+  border-bottom: 1px solid #CBCBCB;
+  transform: rotate(-45deg);
+  z-index: 1;
+}
+
+.hr-text {
+  font-size: 13px;
+  color: #424242;
+  letter-spacing: 0.54px;
+  z-index: 5;
+  position: relative;
+}
+
+.hr-text-item {
+  margin: 0 5px;
+  color: #424242;
+}
+
+.hr-text-gap {
+  position: relative;
+  top: -2px;
+}
+
+.header-right-label {
+  position: absolute;
+  top: 42px;
+  right: 0;
+  font-family: '华文行楷', 'STXingkai-SC-Light';
+  font-size: 20px;
+  color: #585858;
+  letter-spacing: 1.43px;
+  text-align: center;
+  font-weight: lighter;
+}
+
+
+
+.title {
+  display: inline-block;
+  font-size: 25px;
+}
+
+.nav-item {
+  width: 100px;
+  height: 50px;  
+  line-height: 50px;
+  text-align: center;
+  font-size: 16px;
+  color: #000000;
+  display: inline-block;
+  position: relative;
+  top: 12px;
+  margin-left: 10px;
+  transition: all .3s;
+  border-bottom: 1px solid transparent;
+}
+
+.nav-item:hover {
+  transition: all .3s;
+  border-bottom: 1px solid #006ACC;
+}
+
+.header-logo {
+  position: relative;
+  top: 20px;
+  margin-right: 40px;
+}
+
+.mobile-header {
+  width: 100%;
+  height: 55px;
+  line-height: 55px;
+  background: #fff;
+  border-bottom: 1px solid #ddd;
+  position: fixed;
+  z-index: 101;
+  transform: translate3D(0,0,0);
+}
+
+.mobile-header-logo {
+  margin: 0 0 0 10px;
+  width: 150px;
+  margin-top: 14px;
+}
+
+.mobile-header-menu {
+  font-size: 30px;
+  margin: 10px 20px;
+}
+
+.mobile-nav {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: #666;
+  z-index: 10;
+}
+
+.activeRoute {
+  border-bottom: 1px solid #006ACC;
+  color: #006ACC;
+}
+
+@media (max-width: 920px) {
+  .header-content {
+    width: 100%;
+  }
+}
