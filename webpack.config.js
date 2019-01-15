@@ -22,7 +22,7 @@ const config = {
     app: [
       './main.js',
     ],
-    vendor: [ 
+    vendor: DEBUG ? [] : [ 
       'es5-shim',
       'es5-shim/es5-sham',
       'babel-polyfill',
