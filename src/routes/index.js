@@ -20,7 +20,7 @@ export const createRoutes = (store) => ({
     counterRoute(store),
     { path: '/echarts', component: echartsRoute },
     { path: '/article', component: Article },
-    { path: '/calendar', component: Calendar },
+    { path: '/calendar', component: Calendar},
     NotFound,
   ],
 });

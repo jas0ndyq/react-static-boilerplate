@@ -213,7 +213,7 @@ const uglyOptions = !DEBUG ? {
     },
   }
 
-config.plugins.push(new webpack.optimize.UglifyJsPlugin(uglyOptions))
+// config.plugins.push(new webpack.optimize.UglifyJsPlugin(uglyOptions))
 
 if (!DEBUG) {
   config.plugins.push(new webpack.optimize.AggressiveMergingPlugin())

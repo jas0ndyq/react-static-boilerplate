@@ -18,6 +18,7 @@ class Article extends Component {
     this.state = {
       sessionList: []
     };
+    console.log(this);
   }
 
   fetchPost () {

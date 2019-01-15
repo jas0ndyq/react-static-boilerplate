@@ -15,7 +15,7 @@ const browserHistory = useRouterHistory(createHashHistory)({
   basename: __BASENAME__,
 });
 
-console.log('browserHistory', browserHistory);
+console.log('browserHistory', browserHistory, 1);
 
 // ========================================================
 // Store and History Instantiation
@@ -31,7 +31,7 @@ const history = syncHistoryWithStore(browserHistory, store, {
   selectLocationState: (state) => state.router,
 });
 
-console.log('history', history);
+console.log('history', history, store);
 // ========================================================
 // Developer Tools Setup
 // ========================================================
